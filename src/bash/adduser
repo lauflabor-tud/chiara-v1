@@ -1,0 +1,56 @@
+#
+# Script to create a chiara user
+# Parameters:
+#   $1: User to add
+#   $2: Add user as admin? 1 or 0
+#   $3: Password of the user
+#   $4: Location of the apache password file
+#   $5: Location of the apache config file (most @ /etc/apache2/sites-available/)
+#   $6: Location of the user's webfolder (e.g. /test/ if 130.83.212.83/test/john)
+#   $7: Realm for the apache password file
+#   $8: Server IP (e.g. 130.83.212.83)
+
+# Inputs
+user=$1
+admin=$2
+password=$3
+passwordFile=$4
+apacheConfFile=$5
+apacheChiaraPath=$6
+usersWebfolder=$7
+realm=$8
+serverIP=$9
+
+# Add user to apache config file
+echo    ""                                              >> $apacheConfFile
+echo    "# Add new user $user"                          >> $apacheConfFile
+echo    "Alias $usersWebfolder$user $apacheChiaraPath""data/$user/"   >> $apacheConfFile
+echo    "<Location $usersWebfolder$user>"               >> $apacheConfFile
+echo    "  Dav On"                                      >> $apacheConfFile
+echo    "  Options +Indexes"                            >> $apacheConfFile
+echo    "  DirectoryIndex none"                         >> $apacheConfFile
+echo    "  AuthType Digest"                             >> $apacheConfFile
+echo    "  AuthName \"$realm\""                         >> $apacheConfFile
+echo    "  AuthDigestDomain $usersWebfolder$user/ localhost$usersWebfolder$user $serverIP$usersWebfolder$user"    >> $apacheConfFile
+echo    "  AuthDigestProvider file"                     >> $apacheConfFile
+echo    "  AuthUserFile $passwordFile"                  >> $apacheConfFile
+echo    "  Require user $user"                          >> $apacheConfFile
+echo    "</Location>"                                   >> $apacheConfFile
+
+# Set user password 
+(echo -n "$user:$realm:" && echo -n "$user:$realm:$password" | md5sum | awk '{print $1}') >> "$passwordFile"
+
+# Add user home directory
+if [ ! -d "$apacheChiaraPath""data" ]; then
+    mkdir "$apacheChiaraPath""data"
+fi
+mkdir "$apacheChiaraPath""data/$user"
+chown -c www-data:chiara "$apacheChiaraPath""data/$user"
+chmod 775 "$apacheChiaraPath""data/$user"
+
+# Add user to chiara system
+cd "$apacheChiaraPath""py"
+./chiara.py sys adduser $user $admin
+cd
+
+

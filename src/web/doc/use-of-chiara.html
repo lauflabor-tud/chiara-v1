@@ -1,0 +1,379 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>How to use Chiara &mdash; chiara-doc 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="chiara-doc 0.1 documentation" href="index.html" />
+    <link rel="next" title="Setting up Chiara" href="setup-chiara.html" />
+    <link rel="prev" title="Welcome to chiara-doc’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="setup-chiara.html" title="Setting up Chiara"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to chiara-doc’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">chiara-doc 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="how-to-use-chiara">
+<h1><a class="toc-backref" href="#id1">How to use Chiara</a><a class="headerlink" href="#how-to-use-chiara" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar">
+<p class="first sidebar-title">Questions?</p>
+<p class="sidebar-subtitle">Please contact us at:</p>
+<p class="last"><a class="reference external" href="mailto:mmaus&#37;&#52;&#48;sport&#46;tu-darmstadt&#46;de">mmaus<span>&#64;</span>sport<span>&#46;</span>tu-darmstadt<span>&#46;</span>de</a>
+<a class="reference external" href="mailto:dominik&#46;reis&#37;&#52;&#48;stud&#46;tu-darmstadt&#46;de">dominik<span>&#46;</span>reis<span>&#64;</span>stud<span>&#46;</span>tu-darmstadt<span>&#46;</span>de</a></p>
+</div>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#how-to-use-chiara" id="id1">How to use Chiara</a><ul>
+<li><a class="reference internal" href="#mount-your-webfolder-to-your-local-disk" id="id2">Mount your webfolder to your local disk</a><ul>
+<li><a class="reference internal" href="#linux" id="id3">Linux</a></li>
+<li><a class="reference internal" href="#mac-os-x" id="id4">Mac Os X</a></li>
+<li><a class="reference internal" href="#windows" id="id5">Windows</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#put-data-into-the-repository" id="id6">Put data into the repository</a></li>
+<li><a class="reference internal" href="#get-data-into-your-webfolder" id="id7">Get data into your webfolder</a></li>
+<li><a class="reference internal" href="#interface-description" id="id8">Interface description</a><ul>
+<li><a class="reference internal" href="#view-my-shared-folder" id="id9">View my shared folder</a></li>
+<li><a class="reference internal" href="#retrieve-new-collections" id="id10">Retrieve new collections</a></li>
+<li><a class="reference internal" href="#manage-my-collections" id="id11">Manage my collections</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#additional-information" id="id12">Additional Information</a><ul>
+<li><a class="reference internal" href="#info-txt" id="id13">info.txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="mount-your-webfolder-to-your-local-disk">
+<h2><a class="toc-backref" href="#id2">Mount your webfolder to your local disk</a><a class="headerlink" href="#mount-your-webfolder-to-your-local-disk" title="Permalink to this headline">¶</a></h2>
+<p>The following steps will show you how to connect your local disk with your webfolder. You have to choose the manual depending on your operating system.</p>
+<div class="section" id="linux">
+<h3><a class="toc-backref" href="#id3">Linux</a><a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
+<p><strong>Mount</strong></p>
+<ol class="arabic">
+<li><p class="first">Install the package <em>davfs</em>. If you use a distribution based on <em>Debian</em> you can install it as follows:</p>
+<div class="highlight-python"><pre>sudo apt-get install davfs2</pre>
+</div>
+</li>
+<li><p class="first">Create an empty directory in which the data will be mapped. For the example <em>/home/user/mnt</em> you have to type:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">mkdir</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">mnt</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Mount your webfolder into this directory. You can do this with the following command. But you have to replace <em>&lt;chiara-user&gt;</em> into your chiara-username.</p>
+<div class="highlight-python"><pre>sudo mount -t davfs -o uid=1000 http://130.83.212.83/&lt;chiara-user&gt; /home/user/mnt</pre>
+</div>
+</li>
+<li><p class="first">Now you can find the content of your webfolder in <em>/home/user/mnt</em>.</p>
+</li>
+</ol>
+<p><strong>Unmount</strong></p>
+<blockquote>
+<div><p>If you want to unmount <em>/home/user/mnt</em> for example you have to type:</p>
+<div class="highlight-python"><pre>sudo umount /home/user/mnt</pre>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="mac-os-x">
+<h3><a class="toc-backref" href="#id4">Mac Os X</a><a class="headerlink" href="#mac-os-x" title="Permalink to this headline">¶</a></h3>
+<p><strong>Mount</strong></p>
+<ol class="arabic simple">
+<li>Open <strong>Finder</strong>, click <strong>Go</strong> and then click <strong>Connect to Server...</strong>.</li>
+<li>Insert <em>http://130.83.212.83/&lt;chiara-username&gt;</em> in the <strong>Server Address</strong> box. But you have to replace <em>&lt;chiara-username&gt;</em> into your chiara-username.</li>
+<li>If you want to add this server address to <strong>Favorite Servers</strong> click the <strong>+</strong> button.</li>
+<li>Click <strong>Connect</strong>.</li>
+<li>Enter your chiara-username and password and click <strong>Connect</strong>.</li>
+<li>Open <strong>Finder</strong>.</li>
+<li>You can launch your webfolder by clicking it under <strong>SHARED</strong> in the sidebar.</li>
+</ol>
+<p><strong>Unmount</strong></p>
+<ol class="arabic simple">
+<li>Open <strong>Finder</strong>.</li>
+<li>Find your webfolder under <strong>SHARED</strong> in the sidebar and click the eject symbol next to its name.</li>
+</ol>
+</div>
+<div class="section" id="windows">
+<h3><a class="toc-backref" href="#id5">Windows</a><a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<p><strong>Mount</strong></p>
+<ol class="arabic simple">
+<li>Click the <strong>Start</strong> button and then right-click <strong>Computer</strong>.</li>
+<li>Click <strong>Map network drive</strong>...</li>
+<li>In the <strong>Drive</strong> list, choose a drive letter.</li>
+<li>Type <em>\\130.83.212.83\&lt;chiara-username&gt;</em> in the <strong>Folder</strong> box. But you have to replace <em>&lt;chiara-username&gt;</em> into your chiara-username.</li>
+<li>To connect every time you log on to your computer, select the <strong>Reconnect at logon</strong> check box.</li>
+<li>Click <strong>Finish</strong>.</li>
+<li>When the <em>Windows Security</em> window has been opened, enter your chiara-username and password and click <strong>OK</strong>.</li>
+<li>Open Computer by clicking the <strong>Start</strong> button, and the clicking <strong>Computer</strong>.</li>
+<li>You can launch your webfolder by open the drive letter you have chosen above.</li>
+</ol>
+<p><strong>Unmount</strong></p>
+<ol class="arabic simple">
+<li>Open Computer by clicking the <strong>Start</strong> button, and the clicking <strong>Computer</strong>.</li>
+<li>Right-click on your webfolder.</li>
+<li>Click <strong>Disconnect</strong>.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="put-data-into-the-repository">
+<h2><a class="toc-backref" href="#id6">Put data into the repository</a><a class="headerlink" href="#put-data-into-the-repository" title="Permalink to this headline">¶</a></h2>
+<p>The following steps will show you how to put data into the repository to share these with your partners.</p>
+<ol class="arabic simple">
+<li>Copy the new directory to your webfolder.</li>
+<li>Be sure that the new dirctory or one of its parent directories contains an <a class="reference internal" href="#info-txt">info.txt</a> file.</li>
+<li>Launch Chiara&#8217;s website.</li>
+<li>Choose the tab <a class="reference internal" href="#view-my-shared-folder">view my shared folder</a> and add the respective directory to collections.</li>
+<li>Choose the tab <a class="reference internal" href="#manage-my-collections">manage my collections</a> and customize the permissions.</li>
+</ol>
+</div>
+<div class="section" id="get-data-into-your-webfolder">
+<h2><a class="toc-backref" href="#id7">Get data into your webfolder</a><a class="headerlink" href="#get-data-into-your-webfolder" title="Permalink to this headline">¶</a></h2>
+<p>The following steps will show you how to get shared data of your partners into your webfolder.</p>
+<ol class="arabic simple">
+<li>Launch Chiara&#8217;s website.</li>
+<li>Choose the tab <a class="reference internal" href="#retrieve-new-collections">retrieve new collections</a> and search new collections by dint of description and tags.</li>
+<li>Subscribe the respective directory.</li>
+<li>Choose <a class="reference internal" href="#manage-my-collections">manage my collections</a> and download the directory.</li>
+<li>Take a look into your webfolder.</li>
+</ol>
+</div>
+<div class="section" id="interface-description">
+<h2><a class="toc-backref" href="#id8">Interface description</a><a class="headerlink" href="#interface-description" title="Permalink to this headline">¶</a></h2>
+<p>The Chiara web page comes with four tabs. In the following you can find the description of each one (exclusive the documentation tab).</p>
+<div class="section" id="view-my-shared-folder">
+<h3><a class="toc-backref" href="#id9">View my shared folder</a><a class="headerlink" href="#view-my-shared-folder" title="Permalink to this headline">¶</a></h3>
+<p>This tab shows the content of your mounted webfolder. You can apply different options to the directories in it.</p>
+<dl class="docutils">
+<dt><strong>add to collections</strong></dt>
+<dd>Adds the respective directory to the repository to share it with your partners. For permission handling see <a class="reference internal" href="#manage-my-collections">Manage my collections</a>. The directory or one of its parent directories must be contain an <a class="reference internal" href="#info-txt">info.txt</a> file.</dd>
+<dt><strong>unsubscribe</strong></dt>
+<dd>Unsubscribes an ordered directory. But this will not remove the directory from the repository.</dd>
+<dt><strong>push local revision</strong></dt>
+<dd><p class="first">Pushs the local changes of the respective collection to the repository with a new revision number. You have to comment your actual changes.</p>
+<p class="last"><em>Note:</em> You need writing permissions for the update option.</p>
+</dd>
+<dt><strong>update to revision</strong></dt>
+<dd><p class="first">Updates the respective collection in your webfolder in the chosen revision.</p>
+<p class="last"><em>Note:</em> Your local changes will be overwritten.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="retrieve-new-collections">
+<h3><a class="toc-backref" href="#id10">Retrieve new collections</a><a class="headerlink" href="#retrieve-new-collections" title="Permalink to this headline">¶</a></h3>
+<p>Enables a searching of collections in the repository.</p>
+<p>You can search for description or tags (like author, keywords, ...) to filter your query. The description and tags are defined in the <a class="reference internal" href="#info-txt">info.txt</a>. If you do not insert anything, all permitted collections will be found.</p>
+<p><em>Note:</em> You can only find collections for which you have reading permissions.</p>
+</div>
+<div class="section" id="manage-my-collections">
+<h3><a class="toc-backref" href="#id11">Manage my collections</a><a class="headerlink" href="#manage-my-collections" title="Permalink to this headline">¶</a></h3>
+<p>This tab shows all added or subscribed collections. You can apply different options to the collections.</p>
+<dl class="docutils">
+<dt><strong>download</strong></dt>
+<dd>Downloads the respective collection in the newest revision into your webfolder.</dd>
+<dt><strong>permissions</strong></dt>
+<dd><p class="first">You can give users and groups read/write access to the respective collection.</p>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="42%" />
+<col width="17%" />
+<col width="17%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&nbsp;</th>
+<th class="head">no access</th>
+<th class="head">read only</th>
+<th class="head">read and write</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>update to revision</strong></td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr class="row-odd"><td><strong>push local revision</strong></td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr class="row-even"><td><strong>find in search</strong></td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr class="row-odd"><td><strong>download option</strong></td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr class="row-even"><td><strong>permissions option</strong></td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt><strong>unsubscribe</strong></dt>
+<dd>Unsubscribes ordered collection. But this will not remove the collection from the repository.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="additional-information">
+<h2><a class="toc-backref" href="#id12">Additional Information</a><a class="headerlink" href="#additional-information" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="info-txt">
+<h3><a class="toc-backref" href="#id13">info.txt</a><a class="headerlink" href="#info-txt" title="Permalink to this headline">¶</a></h3>
+<p>Each directory or one of its parent directories must be contain an <em>info.txt</em>  before you can add it to the repository.
+It contains the information of the respective directory. You can define a description, some details and search tags. This also helps to retrieve the directory easier.</p>
+<p>It can be structured as follows:</p>
+<div class="highlight-python"><pre>First, it starts with a summary of the collection.
+
+This ends at a line which begins with:
+
+### details ###
+
+In the following, the lines contain a detailed description of the collection
+(e.g. how files are organized in subfolders; subject information; ...)
+
+This continues until a line which begins with:
+
+### tags ###
+
+In this section you can add some tags like:
+    * keyword: example, test
+    * year: 2013
+
+All lines are parsed as follows:
+    * Lines are split at the first  ":" - sign
+    * parts are trimmed (whitespaces removed)
+    * all parts except the first are concatenated
+    * the first part is interpreted as tag name, the second part as tag
+      content</pre>
+</div>
+<p>Download an example: <a class="reference download internal" href="_downloads/info.txt"><tt class="xref download docutils literal"><span class="pre">info.txt</span></tt></a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">How to use Chiara</a><ul>
+<li><a class="reference internal" href="#mount-your-webfolder-to-your-local-disk">Mount your webfolder to your local disk</a><ul>
+<li><a class="reference internal" href="#linux">Linux</a></li>
+<li><a class="reference internal" href="#mac-os-x">Mac Os X</a></li>
+<li><a class="reference internal" href="#windows">Windows</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#put-data-into-the-repository">Put data into the repository</a></li>
+<li><a class="reference internal" href="#get-data-into-your-webfolder">Get data into your webfolder</a></li>
+<li><a class="reference internal" href="#interface-description">Interface description</a><ul>
+<li><a class="reference internal" href="#view-my-shared-folder">View my shared folder</a></li>
+<li><a class="reference internal" href="#retrieve-new-collections">Retrieve new collections</a></li>
+<li><a class="reference internal" href="#manage-my-collections">Manage my collections</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#additional-information">Additional Information</a><ul>
+<li><a class="reference internal" href="#info-txt">info.txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to chiara-doc&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="setup-chiara.html"
+                        title="next chapter">Setting up Chiara</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/use-of-chiara.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="setup-chiara.html" title="Setting up Chiara"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to chiara-doc’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">chiara-doc 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Moritz Maus.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

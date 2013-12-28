@@ -1,0 +1,483 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Setting up Chiara &mdash; chiara-doc 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="chiara-doc 0.1 documentation" href="index.html" />
+    <link rel="next" title="Design goals for Chiara" href="designgoals.html" />
+    <link rel="prev" title="How to use Chiara" href="use-of-chiara.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="designgoals.html" title="Design goals for Chiara"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="use-of-chiara.html" title="How to use Chiara"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">chiara-doc 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="setting-up-chiara">
+<h1><a class="toc-backref" href="#id1">Setting up Chiara</a><a class="headerlink" href="#setting-up-chiara" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar">
+<p class="first sidebar-title">Questions?</p>
+<p class="sidebar-subtitle">Please contact us at:</p>
+<p class="last"><a class="reference external" href="mailto:mmaus&#37;&#52;&#48;sport&#46;tu-darmstadt&#46;de">mmaus<span>&#64;</span>sport<span>&#46;</span>tu-darmstadt<span>&#46;</span>de</a>
+<a class="reference external" href="mailto:dominik&#46;reis&#37;&#52;&#48;stud&#46;tu-darmstadt&#46;de">dominik<span>&#46;</span>reis<span>&#64;</span>stud<span>&#46;</span>tu-darmstadt<span>&#46;</span>de</a></p>
+</div>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#setting-up-chiara" id="id1">Setting up Chiara</a><ul>
+<li><a class="reference internal" href="#compatibility" id="id2">Compatibility</a></li>
+<li><a class="reference internal" href="#setup-per-remote-access" id="id3">Setup per remote access</a><ul>
+<li><a class="reference internal" href="#linux-mac-os-x" id="id4">Linux/Mac Os X</a></li>
+<li><a class="reference internal" href="#windows" id="id5">Windows</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#install-configure-apache" id="id6">Install/Configure Apache</a></li>
+<li><a class="reference internal" href="#configure-chiara" id="id7">Configure Chiara</a><ul>
+<li><a class="reference internal" href="#initialize-database" id="id8">Initialize database</a></li>
+<li><a class="reference internal" href="#manage-users" id="id9">Manage users</a></li>
+<li><a class="reference internal" href="#manage-groups" id="id10">Manage groups</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#overview-parts-of-chiara" id="id11">Overview: Parts of Chiara</a><ul>
+<li><a class="reference internal" href="#python" id="id12">Python</a></li>
+<li><a class="reference internal" href="#sqlite" id="id13">SQLite</a><ul>
+<li><a class="reference internal" href="#database-structure" id="id14">Database structure</a></li>
+<li><a class="reference internal" href="#restore-data" id="id15">Restore data</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#php" id="id16">PHP</a></li>
+<li><a class="reference internal" href="#restructeredtext" id="id17">reStructeredText</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="compatibility">
+<h2><a class="toc-backref" href="#id2">Compatibility</a><a class="headerlink" href="#compatibility" title="Permalink to this headline">¶</a></h2>
+<p><em>Chiara</em> is only compatible with <em>Linux</em>. So you have to set up a Linux server.</p>
+</div>
+<div class="section" id="setup-per-remote-access">
+<h2><a class="toc-backref" href="#id3">Setup per remote access</a><a class="headerlink" href="#setup-per-remote-access" title="Permalink to this headline">¶</a></h2>
+<p>The following steps will show you what you need to do to configure Chiara on a server from somewhere else.</p>
+<div class="section" id="linux-mac-os-x">
+<h3><a class="toc-backref" href="#id4">Linux/Mac Os X</a><a class="headerlink" href="#linux-mac-os-x" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">Open <em>Terminal</em> and access to the server with <em>SSH</em> by typing:</p>
+<div class="highlight-python"><pre>ssh &lt;user&gt;@&lt;server-address&gt;</pre>
+</div>
+</li>
+<li><p class="first">Answer at the security warning with <strong>yes</strong>.</p>
+</li>
+<li><p class="first">Insert your password.</p>
+</li>
+<li><p class="first">Now you are logged on to the server.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="windows">
+<h3><a class="toc-backref" href="#id5">Windows</a><a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Dowload <em>PuTTY</em> at <a class="reference external" href="http://www.putty.org/">http://www.putty.org/</a>.</li>
+<li>Run <em>putty.exe</em>.</li>
+<li>Fill-out the fields <strong>Host name (or IP address)</strong> and <strong>Port</strong>.</li>
+<li>Choose at connection type <strong>SSH</strong>.</li>
+<li><em>Optional:</em> If you want to save this configuration, you have to insert in the <strong>Saved Sessions</strong> field an arbitrary name and click <strong>Save</strong>.</li>
+<li>Click <strong>Open</strong>.</li>
+<li>When the <em>PuTTY Security Alert</em> Window opens, click <strong>Yes</strong>.</li>
+<li>Enter your username and password.</li>
+<li>Now you are logged on to the server.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="install-configure-apache">
+<h2><a class="toc-backref" href="#id6">Install/Configure Apache</a><a class="headerlink" href="#install-configure-apache" title="Permalink to this headline">¶</a></h2>
+<p>The following description is for distributions based on <em>Debian</em>. You have to execute all commands with <strong>sudo</strong>.</p>
+<ol class="arabic">
+<li><p class="first">Install <em>Apache</em>.</p>
+<div class="highlight-python"><pre>apt-get install apache2</pre>
+</div>
+</li>
+<li><p class="first">Install <em>PHP</em>.</p>
+<div class="highlight-python"><pre>apt-get install php5 libapache2-mod-php5
+
+/etc/init.d/apache2 restart</pre>
+</div>
+</li>
+<li><p class="first">Install additional PHP packages.</p>
+<div class="highlight-python"><pre>apt-get install php5-mysql php5-curl php5-gd php5-idn php-pear php5-imagick php5-imap php5-mcrypt php5-memcache php5-ming php5-ps php5-pspell php5-recode php5-snmp php5-sqlite php5-tidy php5-xmlrpc php5-xsl
+
+/etc/init.d/apache2 restart</pre>
+</div>
+</li>
+<li><p class="first"><em>Optional:</em> If you Search further PHP packages, you can list all available as follows:</p>
+<div class="highlight-python"><pre>apt-cache search php5</pre>
+</div>
+</li>
+<li><p class="first">Enable necessary modules.</p>
+<div class="highlight-python"><pre>a2enmod dav dav_fs auth_digest</pre>
+</div>
+</li>
+<li><p class="first"><em>Optional:</em> Install <em>Python</em> package.</p>
+<div class="highlight-python"><pre>apt-get install libapache2-mod-wsgi
+
+a2enmod wsgi</pre>
+</div>
+</li>
+</ol>
+<ol class="arabic" id="chiara-configuration-file" start="7">
+<li><p class="first">Navigate to <em>/etc/apache2/sites-available</em> and create a chiara configuration file like this: <a class="reference download internal" href="_downloads/chiara"><tt class="xref download docutils literal"><span class="pre">chiara</span></tt></a></p>
+</li>
+<li><p class="first">Link this file to <em>sites-enabled</em> and use <em>a2ensite &lt;sitename&gt;</em> to enable the website.</p>
+<div class="highlight-python"><pre>ln -s /etc/apache2/sites-available/chiara /etc/apache2/sites-enabled/chiara
+
+a2ensite chiara
+
+/etc/init.d/apache2 restart</pre>
+</div>
+</li>
+<li><p class="first">Link Chiara to Apache. <em>&lt;path/to/chiara&gt;</em> means the path where Chiara is located (e.g. <em>/qnap/chiara</em>).</p>
+<div class="highlight-python"><pre>ln -s &lt;path/to/chiara&gt; /var/www/chiara</pre>
+</div>
+</li>
+<li><p class="first">Set Chiara configuration parameters in the file <em>config.ini</em>.</p>
+</li>
+<li><p class="first">Add user and group <em>chiara</em> and set permissions.</p>
+<div class="highlight-python"><pre>addgroup chiara
+
+adduser chiara --ingroup chiara
+
+usermod -aG chiara chiara
+
+usermod -aG chiara www-data
+
+chown -cR www-data:chiara &lt;path/to/chiara&gt;
+
+find &lt;path/to/chiara&gt; -exec chmod 775 {} +
+
+chmod 644 &lt;path/to/password-file&gt;/passwd.dav</pre>
+</div>
+</li>
+<li><p class="first">Add the following lines into the file <em>/etc/rc.local</em> to start the Chiara server at system start.</p>
+<div class="highlight-python"><pre># start chiara
+su chiara -c '&lt;path/to/chiara&gt;/py/chiaraSRV2.py &amp;'</pre>
+</div>
+</li>
+<li><p class="first">Start Chiara server manually with the following command or restart the system.</p>
+<div class="highlight-python"><pre>su chiara -c '&lt;path/to/chiara&gt;/py/chiaraSRV2.py &amp;'</pre>
+</div>
+</li>
+<li><p class="first">Open your browser and insert your server adress configured in the <a class="reference internal" href="#chiara-configuration-file">chiara configuration file</a> to check if it works (e.g. <em>http://130.83.212.83/chiara</em>).</p>
+</li>
+</ol>
+</div>
+<div class="section" id="configure-chiara">
+<h2><a class="toc-backref" href="#id7">Configure Chiara</a><a class="headerlink" href="#configure-chiara" title="Permalink to this headline">¶</a></h2>
+<p>The configuration of Chiara is set via <em>&lt;path/to/chiara&gt;/py/chiara.py</em>. Best move to <em>&lt;path/to/chiara&gt;</em> for executing the commands in this chapter. You can call the help as follows:</p>
+<div class="highlight-python"><pre>./chiara.py sys -h</pre>
+</div>
+<div class="section" id="initialize-database">
+<h3><a class="toc-backref" href="#id8">Initialize database</a><a class="headerlink" href="#initialize-database" title="Permalink to this headline">¶</a></h3>
+<p>Before you are able to manage users and groups, you have to initialize a database.</p>
+<div class="highlight-python"><pre>./chiara.py sys init_db</pre>
+</div>
+</div>
+<div class="section" id="manage-users">
+<h3><a class="toc-backref" href="#id9">Manage users</a><a class="headerlink" href="#manage-users" title="Permalink to this headline">¶</a></h3>
+<p><strong>Add user</strong></p>
+<ol class="arabic">
+<li><p class="first">Add user in the <a class="reference internal" href="#chiara-configuration-file">chiara configuration file</a> in Apache.</p>
+</li>
+<li><p class="first">Add password of the user to the password file with <em>htdigest</em>. This file is located at the chiara trunk, but you can move this to somewhere else. &lt;realm&gt; should be kept fixed (e.g. <a class="reference external" href="mailto:Chiara&#37;&#52;&#48;LL">Chiara<span>&#64;</span>LL</a>). Please note your configuration in <em>conifg.ini</em> under section <em>password</em>.</p>
+<div class="highlight-python"><pre>htdigest &lt;file&gt; &lt;realm&gt; &lt;user&gt;</pre>
+</div>
+</li>
+<li><p class="first">Add the user home directory to Chiara with proper access rights.</p>
+<div class="highlight-python"><pre>mkdir &lt;path/to/chiara&gt;/data/&lt;user&gt;
+
+chown -c www-data:www-data &lt;path/to/chiara&gt;/data/&lt;user&gt;
+
+chmod 775 &lt;path/to/chiara&gt;/data/&lt;user&gt;</pre>
+</div>
+</li>
+<li><p class="first">Add user to chiara system.</p>
+<div class="highlight-python"><pre>./chiara.py sys adduser &lt;user&gt;</pre>
+</div>
+</li>
+</ol>
+<p><strong>Remove user</strong></p>
+<ol class="arabic">
+<li><p class="first">Remove user from chiara system.</p>
+<div class="highlight-python"><pre>./chiara.py sys rmuser &lt;user&gt;</pre>
+</div>
+</li>
+<li><p class="first">Remove the user home directory.</p>
+<div class="highlight-python"><pre>rm -r &lt;path/to/chiara&gt;/data/&lt;user&gt;</pre>
+</div>
+</li>
+<li><p class="first">Remove user in the <a class="reference internal" href="#chiara-configuration-file">chiara configuration file</a> in Apache.</p>
+</li>
+</ol>
+<p><strong>List all users</strong></p>
+<div class="highlight-python"><pre>./chiara.py sys listusers</pre>
+</div>
+<p><strong>List all groups of user</strong></p>
+<div class="highlight-python"><pre>./chiara.py sys listuser &lt;user&gt;</pre>
+</div>
+</div>
+<div class="section" id="manage-groups">
+<h3><a class="toc-backref" href="#id10">Manage groups</a><a class="headerlink" href="#manage-groups" title="Permalink to this headline">¶</a></h3>
+<p><strong>Add group</strong></p>
+<div class="highlight-python"><pre>./chiara.py sys addgroup &lt;group&gt;</pre>
+</div>
+<p><strong>Remove group</strong></p>
+<div class="highlight-python"><pre>./chiara.py sys rmgroup &lt;group&gt;</pre>
+</div>
+<p><strong>Add users to group</strong></p>
+<div class="highlight-python"><pre>./chiara.py sys addtogroup &lt;user&gt; &lt;group&gt;</pre>
+</div>
+<p><strong>Remove users from group</strong></p>
+<div class="highlight-python"><pre>./chiara.py sys rmfromgroup &lt;user&gt; &lt;group&gt;</pre>
+</div>
+<p><strong>List all groups</strong></p>
+<div class="highlight-python"><pre>./chiara.py sys listgroups</pre>
+</div>
+<p><strong>List all users of a group</strong></p>
+<div class="highlight-python"><pre>./chiara.py sys listgroup &lt;group&gt;</pre>
+</div>
+</div>
+</div>
+<div class="section" id="overview-parts-of-chiara">
+<h2><a class="toc-backref" href="#id11">Overview: Parts of Chiara</a><a class="headerlink" href="#overview-parts-of-chiara" title="Permalink to this headline">¶</a></h2>
+<p>Chiara consists of the following four parts.</p>
+<div class="section" id="python">
+<h3><a class="toc-backref" href="#id12">Python</a><a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
+<p>The Python part is located in the directory <em>&lt;path/to/chiara&gt;/py</em>. It contains the following modules.</p>
+<dl class="docutils">
+<dt><strong>chiara.py</strong></dt>
+<dd>This module provides the data management tool of Chiara (add users, groups, etc. to the database). See <a class="reference internal" href="#configure-chiara">Configure Chiara</a>.</dd>
+<dt><strong>chiaraSRV2.py</strong></dt>
+<dd>A tiny server that should be run under the user <em>chiara</em> to allow certain actions to be done under the username <em>chiara</em>.</dd>
+</dl>
+</div>
+<div class="section" id="sqlite">
+<h3><a class="toc-backref" href="#id13">SQLite</a><a class="headerlink" href="#sqlite" title="Permalink to this headline">¶</a></h3>
+<p>The SQLite database is located in <em>&lt;path/to/chiara&gt;/py</em> and is called <em>chiara.db</em>. It will be initialized and configured by <em>chiara.py</em>. See <a class="reference internal" href="#configure-chiara">Configure Chiara</a>.</p>
+<div class="section" id="database-structure">
+<h4><a class="toc-backref" href="#id14">Database structure</a><a class="headerlink" href="#database-structure" title="Permalink to this headline">¶</a></h4>
+<div align="center" class="align-center"><img height="550px" src="_images/tables-2.svg" width="940px" /></div>
+</div>
+<div class="section" id="restore-data">
+<h4><a class="toc-backref" href="#id15">Restore data</a><a class="headerlink" href="#restore-data" title="Permalink to this headline">¶</a></h4>
+<p>A collection can never be written, if no user have write access to it. It can also be totally lost, if no user have read and write access to it. In these cases you can manually give a user write access to the respective collection to restore it.</p>
+<p><strong>Install SQLite3 and connect to the database.</strong></p>
+<ol class="arabic">
+<li><p class="first">Install sqlite3.</p>
+<div class="highlight-python"><pre>sudo apt-get install sqlite3</pre>
+</div>
+</li>
+<li><p class="first">Connect to chiara.db.</p>
+<div class="highlight-python"><pre>sqlite3 &lt;path/to/chiara&gt;/py/chiara.db</pre>
+</div>
+</li>
+</ol>
+<p><strong>Find all collections, to which no one has write but at least one user has read access.</strong></p>
+<div class="highlight-python"><pre>SELECT Collection.name, Collection.id
+FROM Collection
+LEFT JOIN user_access
+ON (Collection.id = user_access.collection_id)
+WHERE user_access.collection_id IS NULL;</pre>
+</div>
+<p><strong>Give a user write access to a collection, to which no user has write but at least one user has read access.</strong></p>
+<ol class="arabic">
+<li><p class="first">Find the collection ID of the lost collection.</p>
+<div class="highlight-python"><pre>SELECT id FROM Collection WHERE name=&lt;collection-name&gt;;</pre>
+</div>
+</li>
+<li><p class="first">Find the user ID of the user who will get the access.</p>
+<div class="highlight-python"><pre>SELECT id FROM users WHERE name=&lt;user-name&gt;;</pre>
+</div>
+</li>
+<li><p class="first">Find the maximum ID of all user_access entries.</p>
+<div class="highlight-python"><pre>SELECT MAX(id) FROM user_access;</pre>
+</div>
+</li>
+<li><p class="first">Insert a new entry in the user_access database with the found collection ID, user ID and increased maximum entry ID.</p>
+<div class="highlight-python"><pre>INSERT INTO user_access VALUES (&lt;MAX-ID + 1&gt;, &lt;user-ID&gt;, &lt;collection-ID&gt;, 1);</pre>
+</div>
+</li>
+</ol>
+<p><strong>Find all collections, to which no user has read and write access.</strong></p>
+<div class="highlight-python"><pre>SELECT Collection.name, Collection.id
+FROM Collection
+JOIN (
+    SELECT DISTINCT read.collection_id
+    FROM (SELECT * FROM user_access WHERE modify=0) AS read
+    LEFT JOIN (SELECT * FROM user_access WHERE modify=1) AS write
+    ON read.collection_id=write.collection_id
+    WHERE write.collection_id IS NULL
+) AS onlyread
+ON Collection.id=onlyread.collection_id;</pre>
+</div>
+<p><strong>Give a user write access to a collection, to which no user has read and write access.</strong></p>
+<ol class="arabic">
+<li><p class="first">Find the collection ID of the lost collection.</p>
+<div class="highlight-python"><pre>SELECT id FROM Collection WHERE name=&lt;collection-name&gt;;</pre>
+</div>
+</li>
+<li><p class="first">Find the user ID of the user who will get the write access.</p>
+<div class="highlight-python"><pre>SELECT id FROM users WHERE name=&lt;user-name&gt;;</pre>
+</div>
+</li>
+<li><p class="first">Change read access to write access with the found collection and user ID.</p>
+<div class="highlight-python"><pre>UPDATE user_access SET modify=1 WHERE collection_id=&lt;collection-ID&gt; AND user_id=&lt;user-ID&gt;;</pre>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="php">
+<h3><a class="toc-backref" href="#id16">PHP</a><a class="headerlink" href="#php" title="Permalink to this headline">¶</a></h3>
+<p>The PHP part is located in the directory <em>&lt;path/to/chiara&gt;/web</em>. It contains the following modules.</p>
+<dl class="docutils">
+<dt><strong>index.php</strong></dt>
+<dd>This module will be called from Apache. It builds the main frame (logo, tabbar and footbar) of the web page.</dd>
+<dt><strong>functions.php</strong></dt>
+<dd>This module manages the functionality of the chiara web page by calling <em>chiara.py</em> using the command line (e.g. view my shared folder, add to collections, etc.).</dd>
+</dl>
+</div>
+<div class="section" id="restructeredtext">
+<h3><a class="toc-backref" href="#id17">reStructeredText</a><a class="headerlink" href="#restructeredtext" title="Permalink to this headline">¶</a></h3>
+<p>The chiara html documentation is located in <em>&lt;path/to/chiara&gt;/doc</em> and is linked to <em>&lt;path/to/chiara&gt;/web/doc</em>. It will be built with <em>reStructeredText</em> and compiled with <em>Sphinx</em>. If you want to install Sphinx, you can do this as follows:</p>
+<div class="highlight-python"><pre>sudo apt-get install sphinx-common sphinxbase-utils sphinx-doc sphinxsearch</pre>
+</div>
+<p>The <em>index.rst</em> is the main file and combine all documentation parts like <em>use-of-chiara.rst</em>, <em>setup-chiara.rst</em>, etc.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Setting up Chiara</a><ul>
+<li><a class="reference internal" href="#compatibility">Compatibility</a></li>
+<li><a class="reference internal" href="#setup-per-remote-access">Setup per remote access</a><ul>
+<li><a class="reference internal" href="#linux-mac-os-x">Linux/Mac Os X</a></li>
+<li><a class="reference internal" href="#windows">Windows</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#install-configure-apache">Install/Configure Apache</a></li>
+<li><a class="reference internal" href="#configure-chiara">Configure Chiara</a><ul>
+<li><a class="reference internal" href="#initialize-database">Initialize database</a></li>
+<li><a class="reference internal" href="#manage-users">Manage users</a></li>
+<li><a class="reference internal" href="#manage-groups">Manage groups</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#overview-parts-of-chiara">Overview: Parts of Chiara</a><ul>
+<li><a class="reference internal" href="#python">Python</a></li>
+<li><a class="reference internal" href="#sqlite">SQLite</a><ul>
+<li><a class="reference internal" href="#database-structure">Database structure</a></li>
+<li><a class="reference internal" href="#restore-data">Restore data</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#php">PHP</a></li>
+<li><a class="reference internal" href="#restructeredtext">reStructeredText</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="use-of-chiara.html"
+                        title="previous chapter">How to use Chiara</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="designgoals.html"
+                        title="next chapter">Design goals for Chiara</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/setup-chiara.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="designgoals.html" title="Design goals for Chiara"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="use-of-chiara.html" title="How to use Chiara"
+             >previous</a> |</li>
+        <li><a href="index.html">chiara-doc 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Moritz Maus.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

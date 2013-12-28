@@ -1,0 +1,295 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Implementation of Chiara &mdash; chiara-doc 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="chiara-doc 0.1 documentation" href="index.html" />
+    <link rel="next" title="Version information" href="version.html" />
+    <link rel="prev" title="Design goals for Chiara" href="designgoals.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="version.html" title="Version information"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="designgoals.html" title="Design goals for Chiara"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">chiara-doc 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="implementation-of-chiara">
+<h1>Implementation of Chiara<a class="headerlink" href="#implementation-of-chiara" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="file-storage">
+<h2>File storage<a class="headerlink" href="#file-storage" title="Permalink to this headline">¶</a></h2>
+<p>Each user mounts a WebDAV share to some location and puts the data onto it.
+When (in the web interface) the user uploads the data into Chiara, the files
+are copied to a storage that only Chiara can access.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This implies some tricks with the file permissions:</p>
+<ul class="last simple">
+<li>user <em>chiara</em> must be able to read and write to the directories that have
+been uploaded (=put on the remote webdav folder (&#8220;network drive&#8221;) ).</li>
+<li>no user (potentially <em>chiara</em>, but that&#8217;s not necessary) will have write
+access to the newly imported file. If the</li>
+</ul>
+</div>
+<p>The files will be stored under some name that contains just their <em>id</em> in some
+folder. All users that subscribe to the archive will get a (hard) link to the
+file in their directory.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Users cannot edit the file. When a user deletes the file, the original file
+persists. When a user then creates a new file of the same name, it will be
+a physically different file.</p>
+<p class="last"><em>Chiara</em> will figure this out using the modification time stamp and display
+a potential difference in the web interface (and ask &#8220;want to update?&#8221;).</p>
+</div>
+</div>
+<div class="section" id="meta-data">
+<h2>Meta data<a class="headerlink" href="#meta-data" title="Permalink to this headline">¶</a></h2>
+<p>Each <em>logical node</em> (directory) may have its own metadata, provided in the file
+<em>info.txt</em> in the directory.</p>
+<p>The text in these files will be searchable.</p>
+<p>There are several pre-defined fields for which these <em>info.txt</em> files will be
+parsed.</p>
+</div>
+<div class="section" id="backup-and-data-security">
+<h2>Backup and data security<a class="headerlink" href="#backup-and-data-security" title="Permalink to this headline">¶</a></h2>
+<p>Data that is once stored cannot be deleted again. It can only be unlinked from
+a specific repository or a personal folder. It also cannot be overwritten.</p>
+<p>If a file is updated, it will be internally stored as &#8220;new revision&#8221; of that
+file.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The physical backup has to be performed separately!</p>
+</div>
+</div>
+<div class="section" id="data-organization">
+<h2>Data organization<a class="headerlink" href="#data-organization" title="Permalink to this headline">¶</a></h2>
+<p>Ah, the central and interesting part.</p>
+<p>The central element is a &#8220;collection&#8221;, which is pretty much like a folder. It
+can be accessed by its <em>id</em>.</p>
+<p>Collections can be accessed by</p>
+<blockquote>
+<div><ul class="simple">
+<li>their <em>id</em></li>
+<li>a full, ordered path of collection names (not necessarily unique!)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="managing-collections">
+<h2>Managing collections<a class="headerlink" href="#managing-collections" title="Permalink to this headline">¶</a></h2>
+<p>A user can manage the collection she has write access to. She can</p>
+<blockquote>
+<div><ul class="simple">
+<li>add collections she has read access to (unless there is another
+collection with the same name already in this collection)</li>
+<li>remove collections (with the restriction that each collection <em>must</em>
+(a) either be a root collection or (b) still have a parent collection).</li>
+<li>add files to the collection</li>
+<li>update files in the collection. This is similar to adding the file.</li>
+</ul>
+</div></blockquote>
+<p>In the web interface at &#8220;manage collections&#8221;, a collections-tree is set up, so
+that there will not be infinitely many collections on a screen.</p>
+<p>To facilitate uploading data into a collection, on the web interface there will
+be an option &#8220;create path to collection (and sub-collections [checkbox])&#8221;. For
+security reasons, such paths will be limited to a certain maximal depth.</p>
+<p>On initial uploading, the option &#8220;insert directory to collections&#8221; will be
+provided, &#8220;removing&#8221; (moving to the server&#8217;s private space) the original files
+and replacing them with &#8220;obtained&#8221; data from the collection (which is
+read-only - but can be deleted and newly written).</p>
+<p>Each modification of a collection (id, revision) results in a new revision of
+that collection.</p>
+<div class="section" id="browsing-collections">
+<h3>browsing collections<a class="headerlink" href="#browsing-collections" title="Permalink to this headline">¶</a></h3>
+<p>When a collection has multiple parent, display
+parents: &#8220;p1, &#8220;p2&#8221; , &#8220;p3&#8221;, ... &#8220;p3&#8221; and link to all parents.
+Parents to which the user has no access may be (a) either gray or (b) not shown
+at all (better).</p>
+</div>
+<div class="section" id="adding-updating-files">
+<h3>adding / updating files<a class="headerlink" href="#adding-updating-files" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Idea: &#8220;add files to collection&#8221; works also for folders, but recursively!
+Collection id can directly be entered.</li>
+<li>Adding or updating files in a collection: The collection will get a new
+revision, so that users who subscribed to &#8220;latest&#8221; will get the update, and
+users that subscribed to a specific revision will get the old one.</li>
+</ul>
+</div>
+<div class="section" id="collection-permissions">
+<h3>Collection permissions<a class="headerlink" href="#collection-permissions" title="Permalink to this headline">¶</a></h3>
+<p>When uploading a new collection (directory with sub-directories), it is accessible by default</p>
+<p>The folder where the database is in must be writeable by www-data</p>
+</div>
+<div class="section" id="subscription">
+<h3>Subscription<a class="headerlink" href="#subscription" title="Permalink to this headline">¶</a></h3>
+<p>There are two alternatives (which do not exclude each other!)</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>When a user has found an interesting collection, she can subscribe to
+it. It will appear as a folder in hers shared folder / network folder
+root directory.</li>
+<li>There is a special folder &#8220;my collections&#8221;, which is a collection to
+which the user can add the collections of choice.</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="avoiding-infinite-recursion">
+<h3>Avoiding infinite recursion<a class="headerlink" href="#avoiding-infinite-recursion" title="Permalink to this headline">¶</a></h3>
+<p>Todo: think if infinite recursion has to be avoided!</p>
+<p>If it has to be avoided, every collection gets a &#8220;level&#8221; - and can only
+include higher levels as sub-collection.</p>
+<p>Alternative: When building a directory tree from a subscribed collection,
+store which folder id&#8217;s have already been included, and skip them in further
+folder creation. (Otherwise, create a subfolder for every subcollection and so
+on...)</p>
+</div>
+</div>
+<div class="section" id="the-info-txt-file">
+<h2>The info.txt file<a class="headerlink" href="#the-info-txt-file" title="Permalink to this headline">¶</a></h2>
+<p>In each directory (on uploading), a &#8220;info.txt&#8221; file can be present. It can be
+structured as follows:</p>
+<blockquote>
+<div><p>First, it starts with some text, which is interpreted as &#8220;short
+information&#8221;  - something that summarized what is in the collection  until
+there is a line like this:</p>
+<p>### details ###</p>
+<p>In the following, the lines contain a detailled description of the
+collection (e.g. how files are organized in subfolders; subject
+information; ...)</p>
+<p>This continues until a line which begins with</p>
+<p>### tags ###</p>
+<p>In the remainder, all lines are parsed as follows:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Lines are split at the  &#8221;:&#8221; - sign</li>
+<li>parts are trimmed (whitespaces removed)</li>
+<li>all parts except the first are concatenated</li>
+<li>the first part is interpreted as tag name, the second part as tag
+content.</li>
+</ul>
+</div></blockquote>
+<p>Example:</p>
+<p>keywords: locomotion, language, database
+some thing # invalid line</p>
+<blockquote>
+<div>symbols in here: # &#8216; : ; . () /</div></blockquote>
+<p>note that in the last line, the tag name is &#8216;symbols in here&#8217;, and the tag
+content is &#8216;# &#8216; : ; . () /&#8217;</p>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Implementation of Chiara</a><ul>
+<li><a class="reference internal" href="#file-storage">File storage</a></li>
+<li><a class="reference internal" href="#meta-data">Meta data</a></li>
+<li><a class="reference internal" href="#backup-and-data-security">Backup and data security</a></li>
+<li><a class="reference internal" href="#data-organization">Data organization</a></li>
+<li><a class="reference internal" href="#managing-collections">Managing collections</a><ul>
+<li><a class="reference internal" href="#browsing-collections">browsing collections</a></li>
+<li><a class="reference internal" href="#adding-updating-files">adding / updating files</a></li>
+<li><a class="reference internal" href="#collection-permissions">Collection permissions</a></li>
+<li><a class="reference internal" href="#subscription">Subscription</a></li>
+<li><a class="reference internal" href="#avoiding-infinite-recursion">Avoiding infinite recursion</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-info-txt-file">The info.txt file</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="designgoals.html"
+                        title="previous chapter">Design goals for Chiara</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="version.html"
+                        title="next chapter">Version information</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/implementation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="version.html" title="Version information"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="designgoals.html" title="Design goals for Chiara"
+             >previous</a> |</li>
+        <li><a href="index.html">chiara-doc 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Moritz Maus.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

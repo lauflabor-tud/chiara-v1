@@ -1,0 +1,17 @@
+This collection is a short example to show how a collection can be look. 
+
+
+### details ###
+The directory structure is as follows:
+
+img/
+    Contains all example pictures. Please insert only images in PNG.
+
+docs/
+    Contains all example documents.
+
+
+### tags ###
+author: dominik
+keywords: example, ex_img, ex_docs
+year: 2013

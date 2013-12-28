@@ -1,0 +1,248 @@
+/* define css styles for Chiara */
+
+/* links */
+a.my_a{ 
+    font-family: Verdana,Arial,Helvetica;
+    color:#cf2040;
+    font-weight:bold;
+    text-decoration:none;
+    font-size:12px;
+    }
+
+a.my_a:hover{color:#af4060;
+    }
+
+a.my_b{font-family: Verdana,Arial,Helvetica;
+    color:#2040cf;
+    font-weight:bold;
+    text-decoration:none;
+    font-size:12px;
+}
+
+a.my_b:hover{color:#40709a;}
+
+a.my_doc {font-family: Verdana,Arial,Helvetica;
+    color:#5a5a5a;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:9pt;
+}
+
+a.my_doc:hover{color:#8a8a8a;}
+
+a.dir{font-family: Verdana,Arial,Helvetica;
+    color:#5a5aea;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:10pt;
+}
+
+a.dir:hover{color:#8a8afa;}
+
+a.file{font-family: Verdana,Arial,Helvetica;
+    color:#5a5a5a;
+    text-decoration:none;
+    font-size:9pt;
+}
+
+a.file:hover{color:#8a8a8a;}
+
+a.addcollection{font-family: Verdana,Arial,Helvetica;
+    color:#ea5a2a;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:9pt;
+}
+
+a.addcollection:hover{color:#ea8f3e;}
+
+a.unsubscribecollection{font-family: Verdana,Arial,Helvetica;
+    color:#2a5aaa;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:9pt;
+}
+
+a.unsubscribecollection:hover{color:#357abb;}
+
+a.downloadcollection{font-family: Verdana,Arial,Helvetica;
+    color:#af1234;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:9pt;
+}
+
+a.downloadcollection:hover{color:#ef2345}
+
+a.updatecollection{font-family: Verdana,Arial,Helvetica;
+    color:#2a5aaa;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:9pt;
+}
+
+a.updatecollection:hover{color:#357abb;}
+
+a.permissions{font-family: Verdana,Arial,Helvetica;
+    color:#ea5a2a;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:9pt;
+}
+a.permissions:hover{color:#ea8f3e;}
+
+a.preference{font-family: Verdana,Arial,Helvetica;
+    color:#5a5aea;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:10pt;
+    margin-left:25px;
+}
+
+a.preference:hover{color:#8a8afa;}
+
+
+/* spans */
+
+span.curr_dir{font-family:Arial,Helvetica;
+    color:#5a5afa;
+    text-decoration:underline;
+    font-size:10pt;
+
+}
+
+span.my_doc {font-family:Arial,Helvetica;
+    color:#5a5a5a;
+    text-decoration:none;
+}
+
+span.file {font-family:Verdana,Arial,Helvetica;
+    color:#807040;
+    font-weight:medium;
+    font-size:9pt;
+}
+
+span.add_info {font-family: Verdana,Arial,Helvetica;
+    color:#030410;
+    font-weight:bold;
+    font-size:8pt;
+}
+
+span.failure {font-family: Verdana,Arial,Helvetica;
+    color:#ff2420;
+    font-weight:bold;
+    font-size:9pt;
+}
+
+span.success {font-family: Verdana,Arial,Helvetica;
+    color:#22ea45;
+    font-weight:bold;
+    font-size:9pt;
+}
+
+
+/* table definitions */
+table.main {
+    border:0px;
+    border-spacing: 0px 2px;
+}
+
+td.bright_bg {background-color:#ffefaf;
+    }
+
+td.collection { font-family:Verdana,Arial,Helvetica;
+    color:#2a5aaa;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:10pt;
+}
+
+td.shortinfo { font-family:Verdana,Arial,Helvetica;
+    color:#807040;
+    font-weight:medium;
+    font-size:9pt;
+}
+
+td.collectionActions {font-family:Verdana,Arial,Helvetica;
+    color:#807040;
+    font-weight:medium;
+    font-size:9pt;
+    text-align:right;
+}
+
+td.permissionInfo {font-family:Verdana,Arial,Helvetica;
+    color:#807040;
+    font-weight:medium;
+    font-size:9pt;
+    text-align:left;
+}
+
+td.userName {font-family:Verdana,Arial,Helvetica;
+    color:#203080;
+    font-weight:bold;
+    font-size:10pt;
+    text-align:left;
+    padding-left:20px;
+}
+
+td.collectionName {font-family:Verdana,Arial,Helvetica;
+    color:#203080;
+    font-weight:bold;
+    font-size:10pt;
+    text-align:left;
+    padding-left:20px;
+}
+
+td.permissionActions {font-family:Verdana,Arial,Helvetica;
+    color:#807040;
+    font-weight:medium;
+    font-size:9pt;
+    text-align:right;
+}
+
+td.smallTitle{font-family:Verdana,Arial,Helvetica;
+    color:#232323;
+    font-weight:bold;
+    font-size:11pt;
+    text-align:left;
+    table-layout:auto;
+    padding-top:8px;
+}
+
+td.subTitle{font-family:Verdana,Arial,Helvetica;
+    color:#232323;
+    font-weight:bold;
+    font-size:10pt;
+    text-align:left;
+    table-layout:auto;
+    padding-left:15px;
+    padding-top:5px
+}
+
+table.listdetails
+{
+	font-family: Verdana, Arial, Helvetica;
+	font-size: 12px;
+    margin-top:10px;
+	margin-left: 20px;
+	width: 600px;
+    text-align: left;
+	border-collapse: collapse;
+}
+th.listdetails
+{
+	font-size: 13px;
+	font-weight: bold;
+	padding: 6px;
+	background: #b9c9fe;
+	border-top: 4px solid #aabcfe;
+	border-bottom: 1px solid #fff;
+	color: #203080;
+}
+td.listdetails
+{
+	padding: 6px;
+	color: #807040;
+	border-top: 1px solid transparent;
+	border-bottom: 1px solid #fff;
+}

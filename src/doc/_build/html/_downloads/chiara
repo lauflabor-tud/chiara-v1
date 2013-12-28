@@ -1,0 +1,45 @@
+# Add chiara web to the apache server
+Alias /chiara /var/www/chiara/web/
+<Location /chiara>
+  #Dav On
+  AuthType Digest
+  AuthName "Chiara@LL"
+  AuthDigestDomain /chiara/ localhost/chiara 130.83.212.83/chiara
+  
+  AuthDigestProvider file
+  AuthUserFile /var/www/chiara/passwd.dav
+  Require valid-user
+</Location>
+
+# Add new user alice
+Alias /alice /var/www/chiara/data/alice/
+<Location /alice>
+  Dav On
+  Options +Indexes
+  DirectoryIndex none
+  
+  AuthType Digest
+  AuthName "Chiara@LL"
+  AuthDigestDomain /alice/ localhost/alice 130.83.212.83/alice
+  
+  AuthDigestProvider file
+  AuthUserFile /var/www/chiara/passwd.dav
+  Require user alice
+</Location>
+
+# Add new user bob
+Alias /bob /var/www/chiara/data/bob/
+<Location /bob>
+  Dav On
+  Options +Indexes
+  DirectoryIndex none
+  AuthType Digest
+  AuthName "Chiara@LL"
+  AuthDigestDomain /bob/ localhost/bob 130.83.212.83/bob
+  
+  AuthDigestProvider file
+  AuthUserFile /var/www/chiara/passwd.dav
+  Require user bob
+</Location>
+
+# Here you can add more users

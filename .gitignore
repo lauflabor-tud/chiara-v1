@@ -1,0 +1,9 @@
+# Linux temporary files
+*~
+*.swp
+*.swo
+
+# Secret data
+src/passwd.dav
+src/data/*
+src/py/chiara.db

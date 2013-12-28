@@ -1,0 +1,30 @@
+#
+# Script to remove a chiara user
+# Parameters:
+#   $1: User to remove
+#   $2: Location of the apache password file
+#   $3: Location of the apache config file (most @ /etc/apache2/sites-available/)
+#   $4: Location of the user's webfolder (e.g. /test/ if 130.83.212.83/test/john)
+#   $5: Realm for the apache password file
+
+# Inputs
+user=$1
+passwordFile=$2
+apacheConfFile=$3
+apacheChiaraPath=$4
+realm=$5
+
+# Remove user from apache config file
+sed -i "/# Add new user $user\|\/data\/$user\//,/<\/Location>/d" $apacheConfFile
+
+# Set user password 
+sed -i "/$user:$realm/d" $passwordFile
+
+# Add user home directory
+rm -r "$apacheChiaraPath""data/$user"
+
+# Add user to chiara system
+cd "$apacheChiaraPath""py"
+./chiara.py sys rmuser $user
+cd
+
